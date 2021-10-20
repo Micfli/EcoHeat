@@ -200,7 +200,15 @@ public class ProjectsWindowController {
             myPdfReport.add(myReportTable);
             myPdfReport.close();
 
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "PDF is in the folder that contains" +
+                    " the application");
+            alert.setHeaderText("PDF successfully created");
+            alert.showAndWait();
+
         } catch (FileNotFoundException | DocumentException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Error when trying to generate PDF" +
+                    " application");
+            alert.showAndWait();
             System.out.println("Error when trying to generate PDF: " + e.getMessage());
             e.printStackTrace();
         }

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<DialogPane prefHeight="204.0" prefWidth="285.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HeatPumpDiallogController">
+<DialogPane prefHeight="204.0" prefWidth="285.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HeatPumpDiallogController">
     <header>
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter all informations bellow to add a new heat pump: " />
     </header>
