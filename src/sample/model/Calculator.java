@@ -10,6 +10,11 @@ public class Calculator {
 
     public final static Calculator INSTANCE = new Calculator();
 
+    //    Those are factors for calculating the required power with a fuel usage method
+    private final static int FACTOR_Z = 40;
+    private final static int FACTOR_SB = 3900;
+    private final static int FACTOR_X = 24;
+
     private Calculator() {
     }
 
@@ -19,7 +24,9 @@ public class Calculator {
 
     //  In this method required power is calculated with the area method
     public void calculateRequiredPower(double area, double requiredHeatPerMeter) {
+//               1000 to convert Wats to kiloWats
         double neededPower = area * requiredHeatPerMeter / 1000;
+        //        converting neededPower to only have two decimal points
         neededPower = Math.round(neededPower * 100.0) / 100.0;
         RequiredPowerNeededHolder.getINSTANCE().setRequiredPower(neededPower);
     }
@@ -45,7 +52,8 @@ public class Calculator {
     //  In this method required power is calculated with the fuel method
     public void calculateRequiredPower(double fuelUsage, int fuelEnergy) {
         double heatNeeded = (double) fuelEnergy * fuelUsage;
-        double neededPower = (heatNeeded * 40) / (24 * 3900);
+        double neededPower = (heatNeeded * FACTOR_Z) / (FACTOR_X * FACTOR_SB);
+        //        converting neededPower to only have two decimal points
         neededPower = Math.round(neededPower * 100.0) / 100.0;
         RequiredPowerNeededHolder.getINSTANCE().setRequiredPower(neededPower);
     }
