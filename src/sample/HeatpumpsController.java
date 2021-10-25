@@ -18,14 +18,13 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import sample.model.DataSource;
 import sample.model.HeatPump;
+import sample.model.HeatPumpRepository;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.concurrent.ExecutionException;
 
 public class HeatpumpsController {
 
@@ -59,7 +58,7 @@ public class HeatpumpsController {
     @FXML
     private ImageView heatPumpImage;
 
-    public void initialize() throws ExecutionException, InterruptedException {
+    public void initialize() {
         File file = new File("@../../Energy-Free-Download-PNG.png");
         Image image = new Image(file.toURI().toString());
         heatPumpImage.setImage(image);
@@ -141,7 +140,7 @@ public class HeatpumpsController {
         alert.setContentText("Are you sure? Press OK to confirm, or Cancel to back out.");
         Optional<ButtonType> result = alert.showAndWait();
         if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
-            if (DataSource.getInstance().deleteFromHeatpumps(heatPump.get_id())) {
+            if (HeatPumpRepository.getInstance().deleteFromHeatpumps(heatPump.get_id())) {
                 Task<ObservableList<HeatPump>> task = new GetAllHeatPumpsTask();
                 new Thread(task).start();
                 heatpumpsTable.itemsProperty().bind(task.valueProperty());

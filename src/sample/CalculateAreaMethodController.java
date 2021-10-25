@@ -13,9 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import sample.model.BuildingType;
-import sample.model.Calculator;
-import sample.model.DataSource;
+import sample.model.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -84,7 +82,7 @@ public class CalculateAreaMethodController {
             return;
         }
         String typeofBuilding = typeOfBuildingChoiceBox.getSelectionModel().getSelectedItem();
-        double requierdHeatPerMeter = DataSource.getInstance().queryNeededheatFromBuildingTypes(typeofBuilding);
+        double requierdHeatPerMeter = BuildingTypeRepository.getInstance().queryNeededheatFromBuildingTypes(typeofBuilding);
         double areaValue = Math.abs(Double.parseDouble(area.getText().trim()));
 
         Calculator.getINSTANCE().calculateRequiredPower(areaValue, requierdHeatPerMeter);
@@ -93,7 +91,7 @@ public class CalculateAreaMethodController {
         int id = 1;
 
         for (Double match : matches) {
-            DataSource.getInstance().updateHeatpumpsSetMatch(match, id);
+            HeatPumpRepository.getInstance().updateHeatpumpsSetMatch(match, id);
             id++;
         }
 
@@ -111,7 +109,7 @@ class GetAllBuildingTypes extends Task<List<BuildingType>> {
 
     @Override
     public List<BuildingType> call() {
-        return DataSource.getInstance().queryBuildingsTypes();
+        return BuildingTypeRepository.getInstance().queryBuildingsTypes();
 
     }
 }

@@ -13,9 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import sample.model.Calculator;
-import sample.model.DataSource;
-import sample.model.Fuel;
+import sample.model.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -82,7 +80,7 @@ public class CalculateFuelMethodController {
             return;
         }
         String fuel = typeOfFuelChoiceBox.getSelectionModel().getSelectedItem();
-        int energy = DataSource.getInstance().queryEnergyFromFuels(fuel);
+        int energy = FuelRepository.getInstance().queryEnergyFromFuels(fuel);
 
         Calculator.getINSTANCE().calculateRequiredPower(fuelUsage, energy);
 
@@ -90,7 +88,7 @@ public class CalculateFuelMethodController {
         int id = 1;
 
         for (Double match : matches) {
-            DataSource.getInstance().updateHeatpumpsSetMatch(match, id);
+            HeatPumpRepository.getInstance().updateHeatpumpsSetMatch(match, id);
             id++;
         }
 
@@ -108,7 +106,7 @@ class GetAllFuels extends Task<List<Fuel>> {
 
     @Override
     public List<Fuel> call() {
-        return DataSource.getInstance().queryFuels();
+        return FuelRepository.getInstance().queryFuels();
     }
 }
 

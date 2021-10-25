@@ -39,7 +39,7 @@ public class Calculator {
             return null;
         }
 
-        List<Double> powerList = DataSource.getInstance().queryPowerFromHeatPumps();
+        List<Double> powerList = HeatPumpRepository.getInstance().queryPowerFromHeatPumps();
         List<Double> matchList = new ArrayList<>();
 
         for (Double power : powerList) {

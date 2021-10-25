@@ -1,9 +1,8 @@
 package sample;
 
 import javafx.fxml.FXML;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.TextField;
-import sample.model.DataSource;
+import sample.model.ClientRepository;
 
 public class AddHeatPumpToClientController {
 
@@ -19,6 +18,6 @@ public class AddHeatPumpToClientController {
         if ((name.isEmpty() || adress.isEmpty())) {
             return false;
         }
-        return DataSource.getInstance().insertIntoClients(name, adress, id, requiredPower);
+        return ClientRepository.getInstance().insertIntoClients(name, adress, id, requiredPower);
     }
 }

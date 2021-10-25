@@ -14,8 +14,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import sample.model.DataSource;
 import sample.model.HeatPump;
+import sample.model.HeatPumpRepository;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -109,7 +109,7 @@ public class HeatPumpSelectionController {
                 String manufacturer = heatpumpsTable.getSelectionModel().getSelectedItem().getManufacturer();
                 String model = heatpumpsTable.getSelectionModel().getSelectedItem().getModel();
                 double power = heatpumpsTable.getSelectionModel().getSelectedItem().getPower();
-                int id = DataSource.getInstance().queryIdFromHeatpumps(manufacturer, model, power);
+                int id = HeatPumpRepository.getInstance().queryIdFromHeatpumps(manufacturer, model, power);
                 double requiredPower = RequiredPowerNeededHolder.getINSTANCE().getRequiredPower();
                 AddHeatPumpToClientController controller = fxmlLoader.getController();
                 if (controller.processResults(id, requiredPower)) {

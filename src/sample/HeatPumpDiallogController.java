@@ -2,8 +2,8 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import sample.model.DataSource;
 import sample.model.HeatPump;
+import sample.model.HeatPumpRepository;
 
 public class HeatPumpDiallogController {
 
@@ -39,7 +39,7 @@ public class HeatPumpDiallogController {
             double twmax = Math.abs(Double.parseDouble(twmaxField.getText().trim()));
             double cop = Math.abs(Double.parseDouble(copField.getText().trim()));
             double price = Math.abs(Double.parseDouble(priceField.getText().trim()));
-            return DataSource.getInstance().insertHeatpumps(manufacturer, model, power, te, twmax, cop, price);
+            return HeatPumpRepository.getInstance().insertHeatpumps(manufacturer, model, power, te, twmax, cop, price);
         } catch (NumberFormatException | NullPointerException e) {
             System.out.println(e.getMessage());
             return false;
@@ -57,14 +57,18 @@ public class HeatPumpDiallogController {
     }
 
     public boolean updateHeatPump(HeatPump heatPump) {
-        int id = heatPump.get_id();
-        String manufacturer = manufacturerField.getText().trim();
-        String model = modelField.getText().trim();
-        double power = Double.parseDouble(powerField.getText().trim());
-        double te = Double.parseDouble(teField.getText().trim());
-        double twmax = Double.parseDouble(twmaxField.getText().trim());
-        double cop = Double.parseDouble(copField.getText().trim());
-        double price = Double.parseDouble(priceField.getText().trim());
-        return DataSource.getInstance().updateHeatpump(id, manufacturer, model, power, te, twmax, cop, price);
+        try {
+            int id = heatPump.get_id();
+            String manufacturer = manufacturerField.getText().trim();
+            String model = modelField.getText().trim();
+            double power = Double.parseDouble(powerField.getText().trim());
+            double te = Double.parseDouble(teField.getText().trim());
+            double twmax = Double.parseDouble(twmaxField.getText().trim());
+            double cop = Double.parseDouble(copField.getText().trim());
+            double price = Double.parseDouble(priceField.getText().trim());
+            return HeatPumpRepository.getInstance().updateHeatpump(id, manufacturer, model, power, te, twmax, cop, price);
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }

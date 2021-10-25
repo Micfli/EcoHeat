@@ -23,7 +23,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import sample.model.DataSource;
+import sample.model.ClientRepository;
+import sample.model.HeatPumpRepository;
 import sample.model.Project;
 
 import java.io.FileNotFoundException;
@@ -122,9 +123,9 @@ public class ProjectsWindowController {
         String manufacturer = projectsTable.getSelectionModel().getSelectedItem().getManufacturer();
         String model = projectsTable.getSelectionModel().getSelectedItem().getModel();
         double power = projectsTable.getSelectionModel().getSelectedItem().getPower();
-        int heatpumpId = DataSource.getInstance().queryIdFromHeatpumps(manufacturer, model, power);
-        int clientId = DataSource.getInstance().queryIdFromClients(name, adress, heatpumpId);
-        return DataSource.getInstance().deleteFromClients(clientId);
+        int heatpumpId = HeatPumpRepository.getInstance().queryIdFromHeatpumps(manufacturer, model, power);
+        int clientId = ClientRepository.getInstance().queryIdFromClients(name, adress, heatpumpId);
+        return ClientRepository.getInstance().deleteFromClients(clientId);
     }
 
     // This method provides shortcuts from keyboard to deleting a project
@@ -145,7 +146,7 @@ public class ProjectsWindowController {
 
             PdfPCell tableCell;
 
-            List<Project> projectList = DataSource.getInstance().queryClients();
+            List<Project> projectList = ClientRepository.getInstance().queryClients();
 
             tableCell = new PdfPCell(new Phrase("Name"));
             myReportTable.addCell(tableCell);
@@ -220,7 +221,7 @@ class GetAllProjects extends Task<ObservableList<Project>> {
 
     @Override
     public ObservableList<Project> call() {
-        return FXCollections.observableArrayList(DataSource.getInstance().queryClients());
+        return FXCollections.observableArrayList(ClientRepository.getInstance().queryClients());
 
     }
 }
