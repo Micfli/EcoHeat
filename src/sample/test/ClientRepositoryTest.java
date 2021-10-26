@@ -22,11 +22,6 @@ public class ClientRepositoryTest {
     }
 
     @Test
-    public void insertIntoClients() {
-        assertTrue(ClientRepository.getInstance().insertIntoClients("AB", "BC", 3, 1D));
-    }
-
-    @Test
     public void queryClientsWithClosedDB() {
         DataSource.getInstance().close();
         assertNull(ClientRepository.getInstance().queryClients());
