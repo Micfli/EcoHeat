@@ -77,7 +77,7 @@ public class ProjectsWindowController {
 
     @FXML
     public void handleGoBackButton(ActionEvent event) throws IOException {
-        Parent projectsParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("startWindow.fxml")));
+        Parent projectsParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("startwindow.fxml")));
         Scene projectsScene = new Scene(projectsParent, 800, 650);
         Stage projectsStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 

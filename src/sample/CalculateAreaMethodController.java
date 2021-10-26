@@ -53,7 +53,7 @@ public class CalculateAreaMethodController {
 
     @FXML
     public void handleGoBackButton(ActionEvent event) throws IOException {
-        Parent startParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("startWindow.fxml")));
+        Parent startParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("startwindow.fxml")));
         Scene startScene = new Scene(startParent, 750, 500);
         Stage startStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 

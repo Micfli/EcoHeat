@@ -79,7 +79,7 @@ public class HeatpumpsController {
 
     @FXML
     public void handleGoBackButton(ActionEvent event) throws IOException {
-        Parent heatpumpParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("startWindow.fxml")));
+        Parent heatpumpParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("startwindow.fxml")));
         Scene heatpumpScene = new Scene(heatpumpParent, 800, 650);
         Stage heatpumpStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 

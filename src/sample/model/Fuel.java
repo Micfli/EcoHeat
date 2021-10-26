@@ -51,4 +51,5 @@ public class Fuel {
     public void setEnergy(int energy) {
         this.energy.set(energy);
     }
+
 }

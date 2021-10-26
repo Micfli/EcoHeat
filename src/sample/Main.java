@@ -16,7 +16,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("startWindow.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("startwindow.fxml")));
         primaryStage.setTitle("EcoHeat");
         primaryStage.setScene(new Scene(root, 750, 500));
         primaryStage.show();

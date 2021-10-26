@@ -141,7 +141,7 @@ public class HeatPumpSelectionController {
 
     @FXML
     public void handleGoBackButton(ActionEvent event) throws IOException {
-        Parent areaParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("startWindow.fxml")));
+        Parent areaParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("startwindow.fxml")));
         Scene areaScene = new Scene(areaParent, 750, 500);
         Stage areaStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 

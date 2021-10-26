@@ -39,6 +39,7 @@ public class BuildingTypeRepository {
     public void closePreparedStatementsFromBuildingTypeRepository() throws SQLException {
         queryNeededheatFromBuildingTypes.close();
     }
+
     public List<BuildingType> queryBuildingsTypes() {
 
         try (Statement statement = DataSource.getInstance().getConnection().createStatement();
