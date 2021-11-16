@@ -1,5 +1,7 @@
 # EcoHeat
 
+*** Please put EcoHeat.exe, Energy-Free-Download-PNG.png and ecoheatDB.db in the same folder *** 
+
 EcoHeat is an application with a graphical user interface that allows the selection of a heat pump for a customer based on the insulation and size of the investor's building or the type and amount of fuel used by the investor for heating.
 
 Main features of the app:
